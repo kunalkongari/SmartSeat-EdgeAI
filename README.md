@@ -273,4 +273,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-*Edge AI Course — IISc Bangalore, 2025*
+*Edge AI Course — IISc Bangalore, 2026*
