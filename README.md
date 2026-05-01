@@ -17,7 +17,8 @@
 Validated across **three real-world environments** — open lounge seating, classroom rows, and computer lab workstations — using COCO pretrained weights, with no custom fine-tuning required.
 
 > 📂 **GitHub Repo:** [https://github.com/kunalkongari/SmartSeat-EdgeAI.git](https://github.com/kunalkongari/SmartSeat-EdgeAI.git)
-
+>
+> > 🎥 **Demo Video:** [Demo Videos/ Images](https://drive.google.com/drive/folders/1l1RNwKUP6G8YZzS7CNWWCG-WeI-Pj02M?usp=drive_link)
 ---
 
 ## 🎯 Key Features
