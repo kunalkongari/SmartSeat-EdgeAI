@@ -1,0 +1,107 @@
+================================================================
+EDGE AI COURSE — PROJECT SUBMISSION
+IISc Bangalore | 2026
+================================================================
+
+PROJECT TITLE:
+SmartSeat — Real-Time Library & Classroom Seat Occupancy Detection
+using YOLOv8 on Raspberry Pi 5
+
+SHORT DESCRIPTION:
+SmartSeat is an edge AI system that detects occupied and vacant seats
+in library and classroom environments using a pretrained YOLOv8n model
+(yolov8n.pt, COCO weights) deployed on a Raspberry Pi 5 (16GB) via
+TensorFlow Lite. The system achieves 14–15 FPS with INT8 quantization
+at only 34% CPU usage — compared to 5–6 FPS and 61% CPU in the
+baseline mode — and displays real-time occupancy on a local web
+dashboard. Validated across three real-world environments: open lounge,
+classroom rows, and computer lab workstations.
+
+================================================================
+TEAM MEMBERS
+================================================================
+
+1. Name        : Kunal Kongari
+   Affiliation : Smart Manufacturing (DM), IISc Bangalore
+   SR. No      : 26732
+   Email       : kunalkongari@iisc.ac.in
+   Contribution: Developed the baseline YOLOv8n inference pipeline;
+                 integrated pretrained COCO model for real-time person
+                 and chair detection on Raspberry Pi 5, discovered FP16 
+		 provides no speed benefit on RPi 5 ARM CPU.
+
+2. Name        : Samriddhi Bhattacharjee
+   Affiliation : Smart Manufacturing (DM), IISc Bangalore
+   SR. No      : 26355
+   Email       : samriddhib@iisc.ac.in
+   Contribution: Designed and developed the local Flask-based web
+                 dashboard including live annotated camera feed (MJPEG
+                 stream), per-seat status tiles (Seat Map), and
+                 Occupancy Stats panel with real-time updates.
+
+3. Name        : Aryan Dahiya
+   Affiliation : Mobility Engineering (Mechanical Dept.), IISc Bangalore
+   SR. No      : 26579
+   Email       : aryandahiya@iisc.ac.in
+   Contribution: Exported yolov8n.pt to TFLite in Float32, FP16, and
+                 INT8 formats; benchmarked FPS and CPU utilization
+                 across all formats; identified INT8 as optimal (14–15
+                 FPS, 34% CPU).
+
+4. Name        : Hake Shivam Panjab
+   Affiliation : Mobility Engineering (Mechanical Dept.), IISc Bangalore
+   SR. No      : 27141
+   Email       : shivamhake@iisc.ac.in
+   Contribution: Developed the per-seat IoU-based occupancy
+                 identification logic mapping person–chair bounding box
+                 overlaps to per-seat OCCUPIED/VACANT states.
+
+================================================================
+GITHUB PROJECT LINK
+================================================================
+
+[GitHub repository] : https://github.com/kunalkongari/SmartSeat-EdgeAI.git
+
+================================================================
+VIDEO PRESENTATION LINK
+================================================================
+
+[Demo Videos/Images] : https://drive.google.com/drive/folders/1l1RNwKUP6G8YZzS7CNWWCG-WeI-Pj02M?usp=drive_link
+
+================================================================
+MEASURED PERFORMANCE SUMMARY (Raspberry Pi 5)
+================================================================
+
+Mode          | FPS    | CPU Before | CPU During | Model Size
+--------------+--------+-----------+-----------+-----------
+Normal        | 5–6    | 4%         | 61%        | —
+Float32 TFLite| 7–8    | 3%         | 36%        | ~12–14 MB
+FP16 TFLite   | 5–6    | 3%         | 35%        | ~6–7 MB
+INT8 TFLite   | 14–15  | 3%         | 34%        | ~3–4 MB  ← deployed
+
+Key finding: INT8 quantization delivers ~3× faster inference and
+~44% lower CPU usage compared to the baseline normal mode.
+FP16 provides no speed benefit on RPi 5 (no FP16 hardware acceleration).
+
+================================================================
+AI TOOLS USED (Attribution per Course Policy)
+================================================================
+
+- ChatGPT (OpenAI)     : Debugging, optimization ideas, documentation.
+- YOLOv8 (Ultralytics) : Pretrained yolov8n.pt (COCO weights).
+- TensorFlow Lite      : Model conversion & INT8/FP16 quantization.
+- OpenCV               : Camera input, frame capture, preprocessing.
+
+================================================================
+EXTERNAL DATASETS / RESOURCES
+================================================================
+
+- COCO Dataset (pretrained yolov8n.pt): https://cocodataset.org
+  (No custom dataset collected; COCO pretrained weights used directly)
+- Ultralytics YOLOv8: https://github.com/ultralytics/ultralytics
+- TFLite Quantization Docs:
+  https://www.tensorflow.org/lite/performance/post_training_quantization
+
+================================================================
+END OF SUBMISSION
+================================================================

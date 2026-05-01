@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Seat Occupancy</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <div>
+          <h1 class="logo-title">Smart Seat Occupancy</h1>
+          <p class="logo-sub">YOLOv8 · Raspberry Pi · Real-time</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-text" id="statusText">Connecting…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ───────────────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Left: live feed -->
+    <section class="panel video-panel">
+      <div class="panel-header">
+        <span class="panel-label">⬡ Live Feed</span>
+        <span class="badge" id="fpsBadge">— FPS</span>
+      </div>
+      <div class="video-wrapper">
+        <img id="videoFeed" src="/video" alt="Live camera feed" />
+        <div class="video-overlay" id="videoOverlay">
+          <div class="spinner"></div>
+          <span>Initialising camera…</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: stats + seat map -->
+    <aside class="sidebar">
+
+      <!-- Stats cards -->
+      <section class="panel stats-panel">
+        <div class="panel-header">
+          <span class="panel-label">⬡ Occupancy Stats</span>
+          <span class="timestamp" id="lastUpdate">–</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card total-card">
+            <div class="stat-value" id="totalSeats">0</div>
+            <div class="stat-label">Total Seats</div>
+          </div>
+          <div class="stat-card occupied-card">
+            <div class="stat-value" id="occupiedSeats">0</div>
+            <div class="stat-label">Occupied</div>
+          </div>
+          <div class="stat-card vacant-card">
+            <div class="stat-value" id="vacantSeats">0</div>
+            <div class="stat-label">Vacant</div>
+          </div>
+          <div class="stat-card fps-card">
+            <div class="stat-value mono" id="fpsValue">0.0</div>
+            <div class="stat-label">FPS</div>
+          </div>
+        </div>
+
+        <!-- Occupancy progress bar -->
+        <div class="occ-bar-wrap">
+          <div class="occ-bar-label">
+            <span>Occupancy Rate</span>
+            <span id="occPercent">0 %</span>
+          </div>
+          <div class="occ-bar-track">
+            <div class="occ-bar-fill" id="occBarFill" style="width:0%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seat map -->
+      <section class="panel grid-panel">
+        <div class="panel-header">
+          <span class="panel-label">⬡ Seat Map</span>
+          <span class="legend">
+            <span class="legend-dot occ-dot"></span> Occupied &nbsp;
+            <span class="legend-dot vac-dot"></span> Vacant
+          </span>
+        </div>
+        <div class="seat-grid" id="seatGrid">
+          <div class="no-seats">No seats detected yet…</div>
+        </div>
+      </section>
+
+      <!-- Error banner -->
+      <div class="error-banner hidden" id="errorBanner">
+        <span class="error-icon">⚠</span>
+        <span id="errorText">Unknown error</span>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    Smart Seat Occupancy · YOLOv8n · Raspberry Pi · Edge AI
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables / secrets
+.env
+
+# Model weights (optional if too large)
+*.pt
+*.pth
+*.onnx
+*.tflite
+
+# Training outputs
+runs/
+outputs/
+results/
+
+# Temporary files
+*.tmp
+
+# Python build files
+build/
+dist/
+*.egg-info/
+
+# Test/cache folders
+.pytest_cache/
+.mypy_cache/
+
+# Large datasets/images if not needed in repo
+# images/

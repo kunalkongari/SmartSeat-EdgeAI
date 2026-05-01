@@ -1,0 +1,326 @@
+/* ── Reset & Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0b0e14;
+  --panel:       #111620;
+  --panel-alt:   #161c28;
+  --border:      #1e2a3a;
+  --accent:      #1a6fff;
+  --accent-glow: #1a6fff44;
+  --green:       #00c96e;
+  --red:         #ff3d5a;
+  --orange:      #ff8c00;
+  --yellow:      #f0c040;
+  --text:        #d4dded;
+  --text-muted:  #5a6a85;
+  --mono:        'Share Tech Mono', monospace;
+  --sans:        'Rajdhani', sans-serif;
+  --radius:      8px;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+.header {
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.header-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon {
+  font-size: 28px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+.logo-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.logo-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; }
+.header-meta { display: flex; align-items: center; gap: 8px; }
+
+/* status dot */
+.status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: background .3s;
+}
+.status-dot.live  { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.status-dot.error { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+.status-text { font-size: 12px; color: var(--text-muted); font-family: var(--mono); }
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  padding: 16px;
+  height: calc(100vh - 60px - 36px);
+}
+
+/* ── Panel ──────────────────────────────────────────────────────────────────── */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-alt);
+}
+.panel-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--border);
+  color: var(--yellow);
+}
+.timestamp { font-family: var(--mono); font-size: 10px; color: var(--text-muted); }
+
+/* ── Video panel ─────────────────────────────────────────────────────────────── */
+.video-panel { display: flex; flex-direction: column; }
+.video-wrapper {
+  position: relative;
+  flex: 1;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#videoFeed {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: opacity .3s;
+}
+.video-overlay.hidden { display: none; }
+
+/* spinner */
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────────── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* ── Stats grid ──────────────────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+}
+.stat-card {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 12px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.stat-value.mono { font-family: var(--mono); font-size: 26px; }
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.total-card    .stat-value { color: var(--text); }
+.occupied-card .stat-value { color: var(--red); }
+.vacant-card   .stat-value { color: var(--green); }
+.fps-card      .stat-value { color: var(--yellow); }
+
+/* Occupancy bar */
+.occ-bar-wrap { padding: 0 12px 14px; }
+.occ-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+#occPercent { color: var(--text); font-family: var(--mono); }
+.occ-bar-track {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.occ-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--orange), var(--red));
+  border-radius: 3px;
+  transition: width .5s ease;
+}
+
+/* ── Seat map ────────────────────────────────────────────────────────────────── */
+.grid-panel { flex: 1; min-height: 0; }
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  max-height: calc(100% - 42px);
+}
+.no-seats {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 24px 0;
+}
+.seat-box {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 10px 6px 8px;
+  text-align: center;
+  cursor: default;
+  transition: border-color .3s, background .3s;
+}
+.seat-box.occupied {
+  background: rgba(255, 61, 90, 0.10);
+  border-color: var(--red);
+}
+.seat-box.vacant {
+  background: rgba(0, 201, 110, 0.08);
+  border-color: var(--green);
+}
+.seat-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+.seat-number {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+.seat-status {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+.seat-box.occupied .seat-status { color: var(--red); }
+.seat-box.vacant   .seat-status { color: var(--green); }
+
+/* Legend */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.occ-dot { background: var(--red); }
+.vac-dot { background: var(--green); }
+
+/* ── Error banner ────────────────────────────────────────────────────────────── */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 61, 90, 0.12);
+  border: 1px solid var(--red);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--red);
+}
+.error-banner.hidden { display: none; }
+.error-icon { font-size: 18px; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────────── */
+.footer {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .video-panel { height: 50vw; min-height: 240px; }
+  .seat-grid { grid-template-columns: repeat(4, 1fr); }
+}
