@@ -18,7 +18,7 @@ Validated across **three real-world environments** — open lounge seating, clas
 
 > 📂 **GitHub Repo:** [https://github.com/kunalkongari/SmartSeat-EdgeAI.git](https://github.com/kunalkongari/SmartSeat-EdgeAI.git)
 >
-> > 🎥 **Demo Video:** [Demo Videos/ Images](https://drive.google.com/drive/folders/1l1RNwKUP6G8YZzS7CNWWCG-WeI-Pj02M?usp=drive_link)
+> 🎥 **Demo Video:** [Demo Videos/ Images](https://drive.google.com/drive/folders/1l1RNwKUP6G8YZzS7CNWWCG-WeI-Pj02M?usp=drive_link)
 ---
 
 ## 🎯 Key Features
