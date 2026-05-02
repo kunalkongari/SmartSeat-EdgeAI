@@ -1,6 +1,6 @@
 # 🪑 SmartSeat — Real-Time Seat Occupancy Detection using YOLOv8 on Raspberry Pi 5
 
-> **Edge AI Course Project | IISc Bangalore | 2025**
+> **Edge AI Course Project | IISc Bangalore | 2026**
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8n-Ultralytics-orange.svg)](https://ultralytics.com)
