@@ -208,8 +208,6 @@ model.export(format="tflite", int8=True)  # INT8
 # Recommended: INT8 — 14–15 FPS, only 34% CPU
 python3 app.py --model models/yolov8n_int8.tflite
 
-# Float32 — 7–8 FPS, 36% CPU
-python3 src/inference.py --model models/yolov8n_float32.tflite
 ```
 
 ### Step 6: Launch Web Dashboard
