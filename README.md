@@ -262,7 +262,8 @@ def is_seat_occupied(person_bbox, chair_bbox, iou_threshold=0.15):
 3. TFLite Quantization: https://www.tensorflow.org/lite/performance/post_training_quantization
 4. OpenCV: https://docs.opencv.org
 5. Raspberry Pi 5: https://www.raspberrypi.com/products/raspberry-pi-5/
-6. Edge AI Course 2025: https://www.samy101.com/edge-ai-25/project/
+6. Edge AI Course 2026:
+https://www.samy101.com/edge-ai-26/
 
 ---
 
